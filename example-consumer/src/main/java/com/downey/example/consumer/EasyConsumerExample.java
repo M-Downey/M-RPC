@@ -30,5 +30,8 @@ public class EasyConsumerExample {
         } else {
             System.out.println("user == null");
         }
+        // 调用 mock 方法
+        String userInfo = userService.getUserInfo();
+        System.out.println("mock user info is: " + userInfo);
     }
 }

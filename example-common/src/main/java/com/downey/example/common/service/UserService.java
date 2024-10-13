@@ -8,4 +8,12 @@ import com.downey.example.common.model.User;
 public interface UserService {
 
     User getUser(User user);
+
+    /**
+     * 要 mock 的方法（未实现）实际应返回 short 的 mock 值
+     * @return
+     */
+    default String getUserInfo() {
+        return "This is User Info default implementation";
+    }
 }
