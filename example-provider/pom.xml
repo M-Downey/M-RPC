@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.downey</groupId>
-            <artifactId>m-rpc-easy</artifactId>
+            <artifactId>m-rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
