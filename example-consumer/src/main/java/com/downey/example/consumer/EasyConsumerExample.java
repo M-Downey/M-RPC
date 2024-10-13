@@ -2,7 +2,9 @@ package com.downey.example.consumer;
 
 import com.downey.example.common.model.User;
 import com.downey.example.common.service.UserService;
+import com.downey.mrpc.config.RpcConfig;
 import com.downey.mrpc.proxy.ServiceProxyFactory;
+import com.downey.mrpc.util.ConfigUtils;
 
 /**
  * 简易服务消费者示例
@@ -15,6 +17,9 @@ public class EasyConsumerExample {
         // 静态代理
 //        UserService userService = new UserServiceProxy();
         // 动态代理
+        // 测试 ConfigUtil 加载 rpcConfig
+        RpcConfig rpcConfig = ConfigUtils.loadConfig(RpcConfig.class, "rpc");
+        System.out.println(rpcConfig);
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setName("downey");
