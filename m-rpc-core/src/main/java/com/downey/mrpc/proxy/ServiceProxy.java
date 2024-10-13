@@ -2,10 +2,12 @@ package com.downey.mrpc.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.downey.mrpc.RpcApplication;
 import com.downey.mrpc.model.RpcRequest;
 import com.downey.mrpc.model.RpcResponse;
 import com.downey.mrpc.serializer.JdkSerializer;
 import com.downey.mrpc.serializer.Serializer;
+import com.downey.mrpc.serializer.SerializerFactory;
 
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class ServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 指定序列化器
-        Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 构造请求
         RpcRequest rpcRequest = RpcRequest.builder()

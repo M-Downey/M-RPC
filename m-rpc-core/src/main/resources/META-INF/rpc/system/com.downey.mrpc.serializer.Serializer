@@ -1,0 +1,4 @@
+jdk=com.downey.mrpc.serializer.JdkSerializer
+hessian=com.downey.mrpc.serializer.HessianSerializer
+json=com.downey.mrpc.serializer.JsonSerializer
+kryo=com.downey.mrpc.serializer.KryoSerializer

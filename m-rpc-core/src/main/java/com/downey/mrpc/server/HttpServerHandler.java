@@ -1,10 +1,11 @@
 package com.downey.mrpc.server;
 
+import com.downey.mrpc.RpcApplication;
 import com.downey.mrpc.model.RpcRequest;
 import com.downey.mrpc.model.RpcResponse;
 import com.downey.mrpc.registry.LocalRegistry;
-import com.downey.mrpc.serializer.JdkSerializer;
 import com.downey.mrpc.serializer.Serializer;
+import com.downey.mrpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -23,7 +24,7 @@ import java.lang.reflect.Method;
 public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
-        JdkSerializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         System.out.println("Received request: " + request.method() + " " + request.uri());
 

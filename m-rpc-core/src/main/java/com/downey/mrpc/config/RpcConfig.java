@@ -1,5 +1,6 @@
 package com.downey.mrpc.config;
 
+import com.downey.mrpc.serializer.SerializerKeys;
 import lombok.Data;
 
 /**
@@ -33,4 +34,9 @@ public class RpcConfig {
      * 是否模拟调用
      */
     private boolean mock = false;
+
+    /**
+     * 序列化器名称
+     */
+    private String serializer = SerializerKeys.JDK;
 }
