@@ -1,7 +1,10 @@
 package com.downey.mrpc;
 
+import com.downey.mrpc.config.RegistryConfig;
 import com.downey.mrpc.config.RpcConfig;
 import com.downey.mrpc.constant.RpcConstant;
+import com.downey.mrpc.registry.Registry;
+import com.downey.mrpc.registry.RegistryFactory;
 import com.downey.mrpc.util.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +19,11 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init, config = {}", rpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
     public static void init() {

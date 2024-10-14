@@ -9,4 +9,5 @@ public interface RpcConstant {
      * 配置文件有关 rpc 配置的默认前缀
      */
     String DEFAULT_CONFIG_PREFIX = "rpc";
+    String DEFAULT_SERVICE_VERSION = "1.0";
 }
