@@ -35,6 +35,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             RpcRequest rpcRequest = null;
             try {
                 rpcRequest = serializer.deserialize(bytes, RpcRequest.class);
+                System.out.println("请求参数:" + rpcRequest.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }

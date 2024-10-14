@@ -35,6 +35,10 @@ public class EasyConsumerExample {
         }
         // 调用 mock 方法
         String userInfo = userService.getUserInfo();
-        System.out.println("mock user info is: " + userInfo);
+        if (RpcApplication.getRpcConfig().isMock()) {
+            System.out.println("Mock user info is: " + userInfo);
+        } else {
+            System.out.println("Default user info is: " + userInfo);
+        }
     }
 }
