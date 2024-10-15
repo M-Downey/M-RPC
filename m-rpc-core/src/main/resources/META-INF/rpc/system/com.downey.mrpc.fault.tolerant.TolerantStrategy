@@ -1,0 +1,4 @@
+failBack=com.downey.mrpc.fault.tolerant.FailBackTolerantStrategy
+failFast=com.downey.mrpc.fault.tolerant.FailFastTolerantStrategy
+failOver=com.downey.mrpc.fault.tolerant.FailOverTolerantStrategy
+failSafe=com.downey.mrpc.fault.tolerant.FailSafeTolerantStrategy

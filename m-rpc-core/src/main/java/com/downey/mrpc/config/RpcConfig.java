@@ -1,6 +1,8 @@
 package com.downey.mrpc.config;
 
 import com.downey.mrpc.fault.retry.RetryStrategyKeys;
+import com.downey.mrpc.fault.tolerant.TolerantStrategy;
+import com.downey.mrpc.fault.tolerant.TolerantStrategyKeys;
 import com.downey.mrpc.loadbalancer.LoadBalancerKeys;
 import com.downey.mrpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -56,4 +58,9 @@ public class RpcConfig {
      * 重试策略
      */
     private String retryStrategy = RetryStrategyKeys.NO;
+
+    /**
+     * 容错策略
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }
