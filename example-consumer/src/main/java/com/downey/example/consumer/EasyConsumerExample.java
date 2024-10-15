@@ -40,5 +40,13 @@ public class EasyConsumerExample {
         } else {
             System.out.println("Default user info is: " + userInfo);
         }
+        // 第三次调用测试下线服务后，服务发现是否读缓存
+        userInfo = userService.getUserInfo();
+        System.out.println("第三次调用测试下线服务后，服务发现是否读缓存");
+        if (RpcApplication.getRpcConfig().isMock()) {
+            System.out.println("Mock user info is: " + userInfo);
+        } else {
+            System.out.println("Default user info is: " + userInfo);
+        }
     }
 }
