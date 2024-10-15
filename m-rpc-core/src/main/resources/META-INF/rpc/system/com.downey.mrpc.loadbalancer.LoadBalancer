@@ -1,0 +1,3 @@
+roundRobin=com.downey.mrpc.loadbalancer.RoundRobinLoadBalancer
+random=com.downey.mrpc.loadbalancer.RandomLoadBalancer
+consistentHash=com.downey.mrpc.loadbalancer.ConsistentHashLoadBalancer

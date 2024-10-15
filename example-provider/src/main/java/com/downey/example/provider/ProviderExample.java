@@ -10,6 +10,7 @@ import com.downey.mrpc.registry.LocalRegistry;
 import com.downey.mrpc.registry.Registry;
 import com.downey.mrpc.registry.RegistryFactory;
 import com.downey.mrpc.server.VertxHttpServer;
+import com.downey.mrpc.server.tcp.VertxTcpServer;
 
 /**
  * 服务提供者示例
@@ -40,8 +41,8 @@ public class ProviderExample {
             throw new RuntimeException(serviceName + "服务注册失败" + e);
         }
 
-        // 启动 web 服务
-        VertxHttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(rpcConfig.getServerPort());
+        // 启动 TCP 服务端
+        VertxTcpServer vertxTcpServer = new VertxTcpServer();
+        vertxTcpServer.doStart(rpcConfig.getServerPort());
     }
 }
