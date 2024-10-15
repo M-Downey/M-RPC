@@ -1,5 +1,6 @@
 package com.downey.mrpc.config;
 
+import com.downey.mrpc.fault.retry.RetryStrategyKeys;
 import com.downey.mrpc.loadbalancer.LoadBalancerKeys;
 import com.downey.mrpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -50,4 +51,9 @@ public class RpcConfig {
      * 负载均衡器
      */
     private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    /**
+     * 重试策略
+     */
+    private String retryStrategy = RetryStrategyKeys.NO;
 }

@@ -1,0 +1,2 @@
+no=com.downey.mrpc.fault.retry.NoRetryStrategy
+fixedInterval=com.downey.mrpc.fault.retry.FixedIntervalRetryStrategy

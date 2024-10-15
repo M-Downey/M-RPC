@@ -6,6 +6,8 @@ import cn.hutool.http.HttpResponse;
 import com.downey.mrpc.RpcApplication;
 import com.downey.mrpc.config.RpcConfig;
 import com.downey.mrpc.constant.RpcConstant;
+import com.downey.mrpc.fault.retry.RetryStrategy;
+import com.downey.mrpc.fault.retry.RetryStrategyFactory;
 import com.downey.mrpc.loadbalancer.LoadBalancer;
 import com.downey.mrpc.loadbalancer.LoadBalancerFactory;
 import com.downey.mrpc.model.RpcRequest;
@@ -70,8 +72,10 @@ public class ServiceProxy implements InvocationHandler {
             Map<String, Object> requestParams = new HashMap<>();
             requestParams.put("methodName", rpcRequest.getMethodName());
             ServiceMetaInfo selectedServiceMetaInfo = loadBalancer.select(requestParams, serviceMetaInfoList);
-            // TCP 客户端发请求
-            RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo);
+            // TCP 客户端发请求，使用重试策略
+            RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
+            RpcResponse rpcResponse = retryStrategy.doRetry(() ->
+                    VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo));
             return rpcResponse.getData();
         } catch (Exception e) {
             e.printStackTrace();

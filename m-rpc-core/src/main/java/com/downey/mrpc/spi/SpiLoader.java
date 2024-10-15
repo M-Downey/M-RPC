@@ -76,7 +76,7 @@ public class SpiLoader {
             throw new RuntimeException(String.format("SpiLoader 未加载 %s 类型", tClassName));
         }
         if (!keyClassMap.containsKey(key)) {
-            throw new RuntimeException(String.format("SpiLoader 的 %s 不存在 key=%s 的类型", tClassName, key));
+            throw new RuntimeException(String.format("SpiLoader 未获得 %s 接口的 key 为 %s 的实现类对象", tClassName, key));
         }
         // 获取到要加载的实现类型
         Class<?> implClass = keyClassMap.get(key);
